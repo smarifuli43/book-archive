@@ -43,7 +43,8 @@ const displayBooks = (books) => {
     errorHandle(noResult, 'block');
     errorHandle(booksFound, 'none');
   } else {
-    books.forEach((book) => {
+    const booksLimit = books.slice(0, 25);
+    booksLimit.forEach((book) => {
       errorHandle(noResult, 'none');
       const bookDiv = document.createElement('div');
       bookDiv.classList.add('col');
@@ -54,7 +55,9 @@ const displayBooks = (books) => {
       }-M.jpg" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Book Name: ${book.title}</h5>
-        <h6 class="card-title">Author Name: ${book.author_name ?book.author_name:'No info'}</h6>
+        <h6 class="card-title">Author Name: ${
+          book.author_name ? book.author_name : 'No info'
+        }</h6>
         <h6 class="card-text text-info">Publisher: ${
           book.publisher ? book.publisher[0] : 'No info'
         }</h6>
